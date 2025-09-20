@@ -1,0 +1,213 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+html {
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    line-height: 1.5;
+    color: #111827;
+    /* gray-900 */
+    background-color: #f9fafb;
+    /* gray-50 */
+}
+
+h1,
+h2,
+legend {
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 1.875rem;
+    /* text-3xl */
+}
+
+h2 {
+    font-size: 1.5rem;
+    /* text-2xl */
+}
+
+legend {
+    font-size: 1.125rem;
+    /* text-lg */
+}
+
+/* Layout */
+main {
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+.content {
+    width: 80vw;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+header {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Formularios */
+fieldset {
+    border: 1px solid #e5e7eb;
+    /* gray-200 */
+    border-radius: 0.5rem;
+    /* rounded-lg */
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: #fff;
+}
+
+label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    /* gray-700 */
+    margin-bottom: 0.25rem;
+}
+
+input {
+    border: 1px solid #d1d5db;
+    /* gray-300 */
+    border-radius: 0.375rem;
+    /* rounded-md */
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 0.75rem;
+}
+
+input:focus {
+    outline: 2px solid #2563eb;
+    /* blue-600 */
+    border-color: #2563eb;
+}
+
+/* Botones */
+.button,
+button {
+    background-color: #2563eb;
+    /* blue-600 */
+    color: white;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.button:hover,
+button:hover {
+    background-color: #1d4ed8;
+    /* blue-700 */
+}
+
+.button:disabled,
+button:disabled {
+    background-color: #9ca3af;
+    /* gray-400 */
+    cursor: not-allowed;
+}
+
+/* Listas */
+ul {
+    list-style: disc;
+    margin-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+li {
+    margin-bottom: 0.25rem;
+}
+
+/* Resumen */
+.resumen {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.gastos-resumen,
+.resultado-resumen {
+    flex: 1;
+    min-width: 300px;
+    padding: 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.gastos-resumen h2,
+.resultado-resumen h2 {
+    margin-bottom: 0.5rem;
+}
+
+p {
+    margin-bottom: 0.5rem;
+    color: #374151;
+    /* gray-700 */
+    font-size: 0.9rem;
+}
+
+
+/* Fondo semitransparente */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 40;
+}
+
+/* Contenedor del modal */
+.modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+}
+
+/* Caja del modal */
+.modal-content {
+    background: white;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: scroll;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.modal-content h3 {
+    margin-top: 1rem;
+    font-weight: 500;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
