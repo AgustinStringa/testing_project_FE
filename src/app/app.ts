@@ -20,9 +20,17 @@ export class App {
   result: Transfer[] = [];
   showModal: boolean = false;
   expenseHistory: ExpenseStorageItem[] = [];
+  showModalSuggestSave = false;
+  suggesestSaveMessage = '';
+  PARTICIPANTS_LIMIT_COUNT_WARNING = 5;
+  EXPENSE_AMOUNT_LIMIT_WARNING = 20000;
 
   closeExpenseHistory() {
     this.showModal = false;
+  }
+
+  closeModalSuggestSave() {
+    this.showModalSuggestSave = false;
   }
 
   showExpenseHistory() {
@@ -85,6 +93,29 @@ export class App {
     }
   }
 
+  onGetResultClick() {
+    const participantsCondition = this.participants.length > this.PARTICIPANTS_LIMIT_COUNT_WARNING;
+    const expensesCondition = this.expenses.some(
+      (e) => e.amount > this.EXPENSE_AMOUNT_LIMIT_WARNING
+    );
+    if (participantsCondition || expensesCondition) {
+      this.showModalSuggestSave = true;
+      let message = 'Hemos detectado que en tu operación ';
+      if (participantsCondition) {
+        message += 'hay más de 5 participantes ';
+      }
+      if (expensesCondition) {
+        message +=
+          `${participantsCondition ? 'y' : ''}` +
+          'tiene alguna cantidad de gasto que es mayor a $20,000 ';
+      }
+      message += '\n. Te sugerimos guardar la operación para no perder los datos.';
+      this.suggesestSaveMessage = message;
+      this.showModalSuggestSave = true;
+    }
+
+    this.getResult();
+  }
   getResult() {
     const result = splitExpenses(this.participants, this.expenses);
     this.result = result;
@@ -96,6 +127,16 @@ export class App {
     this.expenses = [];
     this.participants = [];
     this.result = [];
+  }
+
+  onInputAmount(evt: Event) {
+    const input = evt.target as HTMLInputElement;
+    let value = input.value;
+    const decimalCheck = value.split('.')[1];
+    if (decimalCheck && decimalCheck.length > 2) {
+      value = parseFloat(this.amount.toFixed(2)).toString();
+      input.value = value;
+    }
   }
 }
 

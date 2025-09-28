@@ -40,7 +40,7 @@ test('performance de tiempo de carga de modal con 100 operaciones, de 2000 usuar
   page,
 }) => {
   const expectedMaxTimeSeconds = 5;
-  await page.goto('http://localhost:4200'); // tu Angular app corriendo
+  await page.goto('http://localhost:4200');
 
   // recuperar local storage actual
 

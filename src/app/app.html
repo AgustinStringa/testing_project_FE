@@ -68,6 +68,7 @@
             id="expense-amount"
             placeholder="ingresa el monto del gasto"
             [(ngModel)]="amount"
+            (input)="onInputAmount($event)"
             name="expense-amount"
           />
         </div>
@@ -83,7 +84,7 @@
         @for (item of expenses; track $index) {
         <p>{{ item.user }} gastó: {{ item.amount }}</p>
         }
-        <button type="button" id="btn-get-result" class="button" (click)="getResult()">
+        <button type="button" id="btn-get-result" class="button" (click)="onGetResultClick()">
           Calcular
         </button>
       </div>
@@ -140,6 +141,22 @@
         }
         <div class="modal-actions">
           <button class="button" (click)="closeExpenseHistory()">Cerrar</button>
+        </div>
+      </div>
+    </div>
+    } @if(showModalSuggestSave){
+    <div class="modal-backdrop" (click)="closeModalSuggestSave()"></div>
+
+    <div class="modal" id="modalSuggestSave">
+      <div class="modal-content">
+        <h2>Sugerencia</h2>
+
+        <div class="modal-body">
+          <p>{{ suggesestSaveMessage }}</p>
+        </div>
+
+        <div class="modal-actions">
+          <button class="button" (click)="closeModalSuggestSave()">Cerrar</button>
         </div>
       </div>
     </div>
