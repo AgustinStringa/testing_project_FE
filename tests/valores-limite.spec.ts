@@ -18,6 +18,19 @@ test.describe('Boundary Value Analysis - Modal de sugerencia de guardado', () =>
     await expect(page.locator('#modalSuggestSave')).toHaveCount(0);
   });
 
+  test('Gasto igual a 20000 → NO muestra modal', async ({ page }) => {
+    await page.fill('#participant', 'User0');
+    await page.click('#btn-add-participant');
+
+    await page.fill('#expense-participant', 'User0');
+    await page.fill('#expense-amount', '20000');
+    await page.click('#btn-add-expense');
+
+    await page.click('#btn-get-result');
+
+    await expect(page.locator('#modalSuggestSave')).toHaveCount(0);
+  });
+
   test('Gasto mayor a 20000 → SÍ muestra modal', async ({ page }) => {
     await page.fill('#participant', 'User0');
     await page.click('#btn-add-participant');
