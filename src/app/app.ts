@@ -38,7 +38,7 @@ export class App {
       ? JSON.parse(existingRecordsJSON)
       : [];
 
-    let lastId = existingRecords.length > 0 ? Math.max(...existingRecords.map((o) => o.id)) : -1;
+    const lastId = existingRecords.length > 0 ? Math.max(...existingRecords.map((o) => o.id)) : -1;
 
     const newItem: ExpenseStorageItem = {
       id: lastId + 1,
